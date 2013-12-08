@@ -74,7 +74,7 @@ static APIClient *instance;
 
 
 #pragma mark - Request Methods
--(void)fetchCategorieOnsuccess:(void (^)(NSArray *categories))success
+-(void)fetchCategoriesOnsuccess:(void (^)(NSArray *categories))success
                  Onfailure:(void (^)(void))failure{
     
     [manager GET:[NSString stringWithFormat:CATEGORIES_URL,APP_KEY] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {

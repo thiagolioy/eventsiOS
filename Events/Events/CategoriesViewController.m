@@ -38,7 +38,7 @@ static NSString *CategoryCellIdentifier = @"CategoryCellID";
 
 -(void)loadCategories{
     
-    [[APIClient shareClient] fetchCategorieOnsuccess:^(NSArray *categories) {
+    [[APIClient shareClient] fetchCategoriesOnsuccess:^(NSArray *categories) {
 
         if(!_categoriesArray)
             _categoriesArray = [NSMutableArray arrayWithCapacity:categories.count];

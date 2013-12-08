@@ -12,6 +12,8 @@
 
 +(APIClient*)shareClient;
 
--(void)fetchCategorieOnsuccess:(void (^)(NSArray *categories))success
+-(void)fetchCategoriesOnsuccess:(void (^)(NSArray *categories))success
                      Onfailure:(void (^)(void))failure;
+
+
 @end
