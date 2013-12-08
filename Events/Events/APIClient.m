@@ -25,6 +25,7 @@
 -(void)handleErrors:(AFHTTPRequestOperation*)operation;
 -(void)configureAPIClient;
 -(void)configureRequestOperationManager;
+-(void)configureReachability;
 @end
 
 
@@ -45,6 +46,23 @@ static APIClient *instance;
 #pragma mark - Configuration Methods
 -(void)configureAPIClient{
     [self configureRequestOperationManager];
+    [self configureReachability];
+}
+
+-(void)configureReachability{
+    NSOperationQueue *operationQueue = manager.operationQueue;
+    [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        switch (status) {
+            case AFNetworkReachabilityStatusReachableViaWWAN:
+            case AFNetworkReachabilityStatusReachableViaWiFi:
+                [operationQueue setSuspended:NO];
+                break;
+            case AFNetworkReachabilityStatusNotReachable:
+            default:
+                [operationQueue setSuspended:YES];
+                break;
+        }
+    }];
 }
 
 -(void)configureRequestOperationManager{
