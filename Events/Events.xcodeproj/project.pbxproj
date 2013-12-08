@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20B8253E1854DA04000B2E89 /* APIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8253D1854DA04000B2E89 /* APIClient.m */; };
+		20B825461854E0F5000B2E89 /* EventCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B825451854E0F5000B2E89 /* EventCategory.m */; };
+		20B825481854E200000B2E89 /* EventCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B825471854E200000B2E89 /* EventCategoryTest.m */; };
 		20BFE2C31854CA6100698ED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C21854CA6100698ED7 /* Foundation.framework */; };
 		20BFE2C51854CA6100698ED7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */; };
 		20BFE2C71854CA6100698ED7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C61854CA6100698ED7 /* UIKit.framework */; };
@@ -18,7 +21,6 @@
 		20BFE2DD1854CA6100698ED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C21854CA6100698ED7 /* Foundation.framework */; };
 		20BFE2DE1854CA6100698ED7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C61854CA6100698ED7 /* UIKit.framework */; };
 		20BFE2E61854CA6100698ED7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 20BFE2E41854CA6100698ED7 /* InfoPlist.strings */; };
-		20BFE2E81854CA6100698ED7 /* EventsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BFE2E71854CA6100698ED7 /* EventsTests.m */; };
 		20BFE2F21854CDB200698ED7 /* mainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20BFE2F11854CDB200698ED7 /* mainStoryboard.storyboard */; };
 		20BFE2F71854CDEA00698ED7 /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20BFE2F61854CDEA00698ED7 /* CategoriesViewController.m */; };
 		C4073171057E42898F090C4D /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 269C0A2DE47943B2BB419D1F /* libPods.a */; };
@@ -37,6 +39,11 @@
 /* Begin PBXFileReference section */
 		20B825391854D4A8000B2E89 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		20B8253A1854D507000B2E89 /* Keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
+		20B8253C1854DA04000B2E89 /* APIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIClient.h; sourceTree = "<group>"; };
+		20B8253D1854DA04000B2E89 /* APIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIClient.m; sourceTree = "<group>"; };
+		20B825441854E0F5000B2E89 /* EventCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCategory.h; sourceTree = "<group>"; };
+		20B825451854E0F5000B2E89 /* EventCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCategory.m; sourceTree = "<group>"; };
+		20B825471854E200000B2E89 /* EventCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCategoryTest.m; sourceTree = "<group>"; };
 		20BFE2BF1854CA6100698ED7 /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BFE2C21854CA6100698ED7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -52,7 +59,6 @@
 		20BFE2DB1854CA6100698ED7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		20BFE2E31854CA6100698ED7 /* EventsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventsTests-Info.plist"; sourceTree = "<group>"; };
 		20BFE2E51854CA6100698ED7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		20BFE2E71854CA6100698ED7 /* EventsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventsTests.m; sourceTree = "<group>"; };
 		20BFE2F11854CDB200698ED7 /* mainStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = mainStoryboard.storyboard; sourceTree = "<group>"; };
 		20BFE2F51854CDEA00698ED7 /* CategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesViewController.h; sourceTree = "<group>"; };
 		20BFE2F61854CDEA00698ED7 /* CategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesViewController.m; sourceTree = "<group>"; };
@@ -94,6 +100,24 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
+		20B8253B1854D96B000B2E89 /* requests */ = {
+			isa = PBXGroup;
+			children = (
+				20B8253C1854DA04000B2E89 /* APIClient.h */,
+				20B8253D1854DA04000B2E89 /* APIClient.m */,
+			);
+			name = requests;
+			sourceTree = "<group>";
+		};
+		20B825401854E090000B2E89 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				20B825441854E0F5000B2E89 /* EventCategory.h */,
+				20B825451854E0F5000B2E89 /* EventCategory.m */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		20BFE2B61854CA6100698ED7 = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +153,8 @@
 		20BFE2C81854CA6100698ED7 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				20B825401854E090000B2E89 /* model */,
+				20B8253B1854D96B000B2E89 /* requests */,
 				20B825371854D46A000B2E89 /* utils */,
 				20BFE2F41854CDD200698ED7 /* controllers */,
 				20BFE2F31854CDC700698ED7 /* storyboards */,
@@ -154,8 +180,8 @@
 		20BFE2E11854CA6100698ED7 /* EventsTests */ = {
 			isa = PBXGroup;
 			children = (
-				20BFE2E71854CA6100698ED7 /* EventsTests.m */,
 				20BFE2E21854CA6100698ED7 /* Supporting Files */,
+				20B825471854E200000B2E89 /* EventCategoryTest.m */,
 			);
 			path = EventsTests;
 			sourceTree = "<group>";
@@ -317,9 +343,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B825461854E0F5000B2E89 /* EventCategory.m in Sources */,
 				20BFE2D31854CA6100698ED7 /* AppDelegate.m in Sources */,
 				20BFE2F71854CDEA00698ED7 /* CategoriesViewController.m in Sources */,
 				20BFE2CF1854CA6100698ED7 /* main.m in Sources */,
+				20B8253E1854DA04000B2E89 /* APIClient.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +355,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				20BFE2E81854CA6100698ED7 /* EventsTests.m in Sources */,
+				20B825481854E200000B2E89 /* EventCategoryTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
