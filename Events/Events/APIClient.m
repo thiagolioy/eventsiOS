@@ -9,30 +9,82 @@
 #import "APIClient.h"
 #import <AFNetworking/AFNetworking.h>
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
-
+#import <AFNetworking/AFNetworkReachabilityManager.h>
+#import "EventCategory.h"
 #import "Keys.h"
 
+#define SERVER_ERROR 500
 
-#define CATEGORIES_URL @"http://api.eventful.com/json/categories/list?app_key=%@"
+#define BASE_URL @"http://api.eventful.com/json/"
+#define CATEGORIES_URL @"categories/list?app_key=%@"
+
+@interface APIClient (){
+   AFHTTPRequestOperationManager *manager;
+}
+
+-(void)handleErrors:(AFHTTPRequestOperation*)operation;
+-(void)configureAPIClient;
+-(void)configureRequestOperationManager;
+@end
+
+
+static APIClient *instance;
 
 @implementation APIClient
 
 
-+(void)fetchCategorieOnsuccess:(void (^)(NSArray *categories))success
-                 Onfailure:(void (^)(NSString *errorMsg))failure{
++(APIClient*)shareClient{
+    if(!instance){
+        instance = [[APIClient alloc] init];
+        [instance configureAPIClient];
+     }
+    return  instance;
+}
+
+
+#pragma mark - Configuration Methods
+-(void)configureAPIClient{
+    [self configureRequestOperationManager];
+}
+
+-(void)configureRequestOperationManager{
     AFNetworkActivityIndicatorManager.sharedManager.enabled = YES;
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSURL *baseURL = [NSURL URLWithString:BASE_URL];
+    manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+    
+}
+
+
+#pragma mark - Request Methods
+-(void)fetchCategorieOnsuccess:(void (^)(NSArray *categories))success
+                 Onfailure:(void (^)(void))failure{
+    
     [manager GET:[NSString stringWithFormat:CATEGORIES_URL,APP_KEY] parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSArray *categories;
         
+        NSArray *categories = [EventCategory eventCategoriesWithArray:[responseObject objectForKey:@"category"]];
         success(categories);
+        
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-        NSString *errorMsg;
-        
-        failure(errorMsg);
-        
+       
+        [self handleErrors:operation];
+        failure();
+    
     }];
+}
+
+
+#pragma mark - Handler Methods
+-(void)handleErrors:(AFHTTPRequestOperation*)operation{
+    
+    NSString *errorMsg;
+    if(operation.response == nil)
+        errorMsg = @"We had a problem trying to fetch the data";
+    else if(operation.response.statusCode == SERVER_ERROR)
+        errorMsg = @"Server Error";
+    
+    
+    [[[UIAlertView alloc] initWithTitle:@"Error" message:errorMsg delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil] show];
+    
 }
 
 @end

@@ -15,4 +15,6 @@
 
 
 +(EventCategory*)eventCategoryWithDict:(NSDictionary*)dict;
++(NSArray*)eventCategoriesWithArray:(NSArray*)array;
+
 @end

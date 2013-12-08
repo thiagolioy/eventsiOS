@@ -37,15 +37,15 @@ static NSString *CategoryCellIdentifier = @"CategoryCellID";
 
 -(void)loadCategories{
     
-    [APIClient fetchCategorieOnsuccess:^(NSArray *categories) {
+    [[APIClient shareClient] fetchCategorieOnsuccess:^(NSArray *categories) {
 
         if(!_categoriesArray)
             _categoriesArray = [NSMutableArray arrayWithCapacity:categories.count];
         [_categoriesArray addObjectsFromArray:categories];
         [_tableView reloadData];
 
-    } Onfailure:^(NSString *errorMsg) {
-        NSLog(@"Failure From the second block");
+    } Onfailure:^(void) {
+        
     }];
 }
 

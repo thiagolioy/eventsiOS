@@ -11,7 +11,9 @@
 
 @interface EventCategoryTest : XCTestCase{
     EventCategory *category;
-    NSMutableDictionary *dict;
+    NSMutableDictionary *firstCategoryDict;
+    NSMutableDictionary *secondCategoryDict;
+    NSMutableArray *categoriesArray;
 }
 
 @end
@@ -21,30 +23,62 @@
 - (void)setUp
 {
     [super setUp];
-    dict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Comedy",@"name",@"1",@"id", nil];
+    firstCategoryDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Comedy",@"name",@"1",@"id", nil];
+    secondCategoryDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"Movies",@"name",@"2",@"id", nil];
+    
+    categoriesArray = [NSMutableArray array];
+    [categoriesArray addObject:firstCategoryDict];
+    [categoriesArray addObject:secondCategoryDict];
 }
 
 - (void)tearDown
 {
     category = nil;
-    dict = nil;
+    firstCategoryDict = nil;
+    secondCategoryDict = nil;
+    categoriesArray = nil;
     // Put teardown code here; it will be run once, after the last test case.
     [super tearDown];
 }
 
 - (void)testShouldCreateEventCategoryFromDict
 {
-    category = [EventCategory eventCategoryWithDict:dict];
+    category = [EventCategory eventCategoryWithDict:firstCategoryDict];
     XCTAssertNotNil(category);
 }
 
+- (void)testShouldCreateEventCategoriesFromArray
+{
+    NSArray *categories = [EventCategory eventCategoriesWithArray:categoriesArray];
+    
+    XCTAssert(categories.count == 2);
+}
 
+- (void)testCreatedCategoriesShouldHaveExpectedValuesForFirstCategory
+{
+    NSArray *categories = [EventCategory eventCategoriesWithArray:categoriesArray];
+    category = [categories firstObject];
+    
+    XCTAssertEqualObjects(@"Comedy", category.name);
+    XCTAssertEqualObjects(@"1", category.ID);
+}
+
+
+- (void)testCreatedCategoriesShouldHaveExpectedValuesForSecondCategory
+{
+    NSArray *categories = [EventCategory eventCategoriesWithArray:categoriesArray];
+    category = [categories lastObject];
+    
+    XCTAssertEqualObjects(@"Movies", category.name);
+    XCTAssertEqualObjects(@"2", category.ID);
+}
 - (void)testCreatedCategoryFromDictShouldFieldsWithExpectedValue
 {
-    category = [EventCategory eventCategoryWithDict:dict];
+    category = [EventCategory eventCategoryWithDict:firstCategoryDict];
     
     
     XCTAssertEqualObjects(@"Comedy", category.name);
     XCTAssertEqualObjects(@"1", category.ID);
 }
+
 @end

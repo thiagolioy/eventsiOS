@@ -10,6 +10,8 @@
 
 @interface APIClient : NSObject
 
-+(void)fetchCategorieOnsuccess:(void (^)(NSArray *categories))success
-                     Onfailure:(void (^)(NSString *errorMsg))failure;
++(APIClient*)shareClient;
+
+-(void)fetchCategorieOnsuccess:(void (^)(NSArray *categories))success
+                     Onfailure:(void (^)(void))failure;
 @end
