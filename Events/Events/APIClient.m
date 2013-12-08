@@ -104,11 +104,8 @@ static APIClient *instance;
         
         NSString *total = [responseObject objectForKey:@"total_items"];
         
-        NSMutableArray *events = [NSMutableArray array];
-        for(NSDictionary *dc in [[responseObject objectForKey:@"events"] objectForKey:@"event"]){
-            Event *event = [Event eventWithDict:dc];
-            [events addObject:event];
-        }
+        NSArray *events =  [Event eventsWithArray:[[responseObject objectForKey:@"events"] objectForKey:@"event"]];
+        
         success(events,[total integerValue]);
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
