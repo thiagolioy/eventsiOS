@@ -9,6 +9,7 @@
 #import "CategoriesViewController.h"
 #import "APIClient.h"
 #import "EventCategory.h"
+#import "EventsViewController.h"
 
 @interface CategoriesViewController ()
 
@@ -62,9 +63,13 @@ static NSString *CategoryCellIdentifier = @"CategoryCellID";
     return cell;
 }
 
-#pragma mark - UITableViewDelegate Methods
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if([segue.identifier isEqualToString:@"events"]){
+        EventsViewController *events = (EventsViewController *)[segue destinationViewController];
+        UITableViewCell *selectedCell = (UITableViewCell*)sender;
+        events.categoryName = selectedCell.textLabel.text;
+    }
 }
 
 @end
