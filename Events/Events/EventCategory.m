@@ -8,6 +8,7 @@
 
 #import "EventCategory.h"
 #import "NSObject+emptyNullValue.h"
+#import "NSString+Utils.h"
 
 @implementation EventCategory
 
@@ -15,7 +16,7 @@
 -(id) initWithDict:(NSDictionary *)dict{
     self = [super init];
     if(self){
-        _name = [self emptyNullValue:[dict objectForKey:@"name"]];
+        _name = [[self emptyNullValue:[dict objectForKey:@"name"]] changeAndSymbol];
         _ID = [self emptyNullValue:[dict objectForKey:@"id"]];
     }
     return self;

@@ -15,6 +15,8 @@
 		20B825501855167B000B2E89 /* EventTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8254F1855167B000B2E89 /* EventTest.m */; };
 		20B8255418551A2F000B2E89 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8255318551A2F000B2E89 /* EventCell.m */; };
 		20B8255818551F18000B2E89 /* NSObject+emptyNullValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8255718551F18000B2E89 /* NSObject+emptyNullValue.m */; };
+		20B8255B18552853000B2E89 /* NSString+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8255A18552853000B2E89 /* NSString+Utils.m */; };
+		20B8255D185528AE000B2E89 /* NSStringUtilsCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8255C185528AE000B2E89 /* NSStringUtilsCategoryTest.m */; };
 		20BFE2C31854CA6100698ED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C21854CA6100698ED7 /* Foundation.framework */; };
 		20BFE2C51854CA6100698ED7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */; };
 		20BFE2C71854CA6100698ED7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C61854CA6100698ED7 /* UIKit.framework */; };
@@ -58,6 +60,9 @@
 		20B8255318551A2F000B2E89 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
 		20B8255618551F18000B2E89 /* NSObject+emptyNullValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+emptyNullValue.h"; sourceTree = "<group>"; };
 		20B8255718551F18000B2E89 /* NSObject+emptyNullValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+emptyNullValue.m"; sourceTree = "<group>"; };
+		20B8255918552853000B2E89 /* NSString+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Utils.h"; sourceTree = "<group>"; };
+		20B8255A18552853000B2E89 /* NSString+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Utils.m"; sourceTree = "<group>"; };
+		20B8255C185528AE000B2E89 /* NSStringUtilsCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSStringUtilsCategoryTest.m; sourceTree = "<group>"; };
 		20BFE2BF1854CA6100698ED7 /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BFE2C21854CA6100698ED7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -148,6 +153,8 @@
 			children = (
 				20B8255618551F18000B2E89 /* NSObject+emptyNullValue.h */,
 				20B8255718551F18000B2E89 /* NSObject+emptyNullValue.m */,
+				20B8255918552853000B2E89 /* NSString+Utils.h */,
+				20B8255A18552853000B2E89 /* NSString+Utils.m */,
 			);
 			name = categories;
 			sourceTree = "<group>";
@@ -219,6 +226,7 @@
 				20BFE2E21854CA6100698ED7 /* Supporting Files */,
 				20B825471854E200000B2E89 /* EventCategoryTest.m */,
 				20B8254F1855167B000B2E89 /* EventTest.m */,
+				20B8255C185528AE000B2E89 /* NSStringUtilsCategoryTest.m */,
 			);
 			path = EventsTests;
 			sourceTree = "<group>";
@@ -389,6 +397,7 @@
 				20BFE2F71854CDEA00698ED7 /* CategoriesViewController.m in Sources */,
 				20BFE2CF1854CA6100698ED7 /* main.m in Sources */,
 				20B8253E1854DA04000B2E89 /* APIClient.m in Sources */,
+				20B8255B18552853000B2E89 /* NSString+Utils.m in Sources */,
 				20B8255818551F18000B2E89 /* NSObject+emptyNullValue.m in Sources */,
 				20B8254E185511BA000B2E89 /* Event.m in Sources */,
 			);
@@ -398,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B8255D185528AE000B2E89 /* NSStringUtilsCategoryTest.m in Sources */,
 				20B825501855167B000B2E89 /* EventTest.m in Sources */,
 				20B825481854E200000B2E89 /* EventCategoryTest.m in Sources */,
 			);

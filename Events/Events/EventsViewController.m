@@ -10,6 +10,7 @@
 #import "APIClient.h"
 #import "Event.h"
 #import "EventCell.h"
+#import <SVPullToRefresh/UIScrollView+SVInfiniteScrolling.h>
 
 @interface EventsViewController (){
     NSUInteger pageNumber;
@@ -34,6 +35,8 @@ static NSString *EventCellIdentifier = @"EventCellID";
 	// Do any additional setup after loading the view.
     [self configureFetchEventsParams];
     [self loadEvents];
+    
+    [self configureInfiniteScroll];
 }
 
 -(void)configureFetchEventsParams{
@@ -41,19 +44,46 @@ static NSString *EventCellIdentifier = @"EventCellID";
     pageSize = 20;
 }
 
+-(void)configureInfiniteScroll{
+    __weak EventsViewController *weakSelf = self;
+    [_tableView addInfiniteScrollingWithActionHandler:^{
+        [weakSelf loadMoreEvents];
+    }];
+}
+
 -(void)updateHeaderSectionWithNumberOfEvents:(NSUInteger)eventsNumber andTotalEventsNumber:(NSUInteger)total{
     _headerSectionLabel.text = [NSString stringWithFormat:@"%d event(s) of %d",eventsNumber,total];
 }
 
+-(void)loadMoreEvents{
+    pageNumber++;
+    [[APIClient shareClient] fetchEventsForCategoryName:_categoryName withPageNumber:pageNumber andPageSize:pageSize onSuccess:^(NSArray *events,NSUInteger totalEventsCount) {
+        
+        [self updateDatasource:events];
+        [self updateHeaderSectionWithNumberOfEvents:_eventsArray.count andTotalEventsNumber:totalEventsCount];
+        
+        
+        [_tableView.infiniteScrollingView stopAnimating];
+        if(_eventsArray.count == totalEventsCount)
+            _tableView.showsInfiniteScrolling = NO;
+    
+    } onFailure:^{
+        
+    }];
+}
 
+-(void)updateDatasource:(NSArray*)events{
+    if(!_eventsArray)
+        _eventsArray = [NSMutableArray arrayWithCapacity:events.count];
+    [_eventsArray addObjectsFromArray:events];
+    [_tableView reloadData];
+}
 
 -(void)loadEvents{
     [[APIClient shareClient] fetchEventsForCategoryName:_categoryName withPageNumber:pageNumber andPageSize:pageSize onSuccess:^(NSArray *events,NSUInteger totalEventsCount) {
-        if(!_eventsArray)
-            _eventsArray = [NSMutableArray arrayWithCapacity:events.count];
-        [_eventsArray addObjectsFromArray:events];
+        
+        [self updateDatasource:events];
         [self updateHeaderSectionWithNumberOfEvents:_eventsArray.count andTotalEventsNumber:totalEventsCount];
-        [_tableView reloadData];
         
     } onFailure:^{
        

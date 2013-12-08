@@ -13,6 +13,7 @@
 #import "EventCategory.h"
 #import "Event.h"
 #import "Keys.h"
+#import "NSString+Utils.h"
 
 #define SERVER_ERROR 500
 
@@ -98,7 +99,7 @@ static APIClient *instance;
                         onSuccess:(void (^)(NSArray *events,NSUInteger totalEventsCount))success
                         onFailure:(void (^)(void))failure{
    
-    NSString *url = [NSString stringWithFormat:EVENTS_URL,APP_KEY,name,pageNumber,pageSize];
+    NSString *url = [NSString stringWithFormat:EVENTS_URL,APP_KEY,[[[name lowercaseString] encodeAndToSymbol] encodeEmptySpaces],pageNumber,pageSize];
     
     [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
