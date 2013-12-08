@@ -7,9 +7,12 @@
 //
 
 #import "CategoriesViewController.h"
+#import "APIClient.h"
+#import "EventCategory.h"
 
 @interface CategoriesViewController ()
 
+@property(nonatomic,strong) IBOutlet NSMutableArray *categoriesArray;
 @property(nonatomic,strong) IBOutlet UITableView *tableView;
 
 @end
@@ -18,19 +21,12 @@ static NSString *CategoryCellIdentifier = @"CategoryCellID";
 
 @implementation CategoriesViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    
+    [self loadCategories];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,14 +35,29 @@ static NSString *CategoryCellIdentifier = @"CategoryCellID";
     // Dispose of any resources that can be recreated.
 }
 
+-(void)loadCategories{
+    
+    [APIClient fetchCategorieOnsuccess:^(NSArray *categories) {
+
+        if(!_categoriesArray)
+            _categoriesArray = [NSMutableArray arrayWithCapacity:categories.count];
+        [_categoriesArray addObjectsFromArray:categories];
+        [_tableView reloadData];
+
+    } Onfailure:^(NSString *errorMsg) {
+        NSLog(@"Failure From the second block");
+    }];
+}
+
 #pragma mark - UITableViewDataSource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;
+    return [_categoriesArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CategoryCellIdentifier];
-    
-    cell.textLabel.text = @"Celula";
+    EventCategory *category = [_categoriesArray objectAtIndex:indexPath.row];
+   
+    cell.textLabel.text = category.name;
     
     return cell;
 }
