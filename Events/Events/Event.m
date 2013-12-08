@@ -7,6 +7,7 @@
 //
 
 #import "Event.h"
+#import "NSObject+emptyNullValue.h"
 
 @implementation Event
 
@@ -14,17 +15,24 @@
 -(id)initWithDict:(NSDictionary *)dict{
     self = [super init];
     if(self){
-        _ID = [dict objectForKey:@"id"];
-        _country = [dict objectForKey:@"country_name"];
-        _city = [dict objectForKey:@"city_name"];
-        _description = [dict objectForKey:@"description"];
-        _title = [dict objectForKey:@"title"];
+        _ID = [self emptyNullValue:[dict objectForKey:@"id"]];
+        _country = [self emptyNullValue:[dict objectForKey:@"country_name"]];
+        _city = [self emptyNullValue:[dict objectForKey:@"city_name"]];
+        _description = [self emptyNullValue:[dict objectForKey:@"description"]];
+        _title = [self emptyNullValue:[dict objectForKey:@"title"]];
+        
+        if([_description isEqualToString:@""])
+            _description = @"This event has not description yet.";
     }
     return self;
 }
 
 +(Event*)eventWithDict:(NSDictionary *)dict{
     return [[self alloc] initWithDict:dict];
+}
+
+-(NSString *)address{
+    return [NSString stringWithFormat:@"%@, %@",_city,_country];
 }
 
 +(NSArray*)eventsWithArray:(NSArray*)array{

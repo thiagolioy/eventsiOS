@@ -53,6 +53,49 @@
 }
 
 
+- (void)testShouldHaveExpectedValueIfDescriptionIsNull
+{
+    [firstEventDict setObject:[NSNull null] forKey:@"description"];
+    
+    event = [Event eventWithDict:firstEventDict];
+    
+    XCTAssertEqualObjects(@"This event has not description yet.", event.description);
+}
+
+- (void)testShouldHaveExpectedValueIfCountryIsNull
+{
+    [firstEventDict setObject:[NSNull null] forKey:@"country_name"];
+    
+    event = [Event eventWithDict:firstEventDict];
+    
+    XCTAssertEqualObjects(@"", event.country);
+}
+
+- (void)testShouldHaveExpectedValueIfCityIsNull
+{
+    [firstEventDict setObject:[NSNull null] forKey:@"city_name"];
+    
+    event = [Event eventWithDict:firstEventDict];
+    
+    XCTAssertEqualObjects(@"", event.city);
+}
+
+- (void)testShouldHaveExpectedValueIfTitleIsNull
+{
+    [firstEventDict setObject:[NSNull null] forKey:@"title"];
+    
+    event = [Event eventWithDict:firstEventDict];
+    
+    XCTAssertEqualObjects(@"", event.title);
+}
+- (void)testShouldHaveExpectedValueIfIDIsNull
+{
+    [firstEventDict setObject:[NSNull null] forKey:@"id"];
+    
+    event = [Event eventWithDict:firstEventDict];
+    
+    XCTAssertEqualObjects(@"", event.ID);
+}
 - (void)testShouldCreateEventCategoryFromDict
 {
     event = [Event eventWithDict:firstEventDict];
@@ -64,6 +107,15 @@
     NSArray *events = [Event eventsWithArray:eventsArray];
     
     XCTAssert(events.count == 2);
+}
+
+- (void)testShouldHaveExpectedAddressValue
+{
+    event = [Event eventWithDict:firstEventDict];
+    
+    
+    XCTAssertEqualObjects(@"New York, United States", event.address);
+    
 }
 
 - (void)testCreatedCategoriesShouldHaveExpectedValuesForFirstCategory

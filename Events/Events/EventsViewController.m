@@ -9,6 +9,7 @@
 #import "EventsViewController.h"
 #import "APIClient.h"
 #import "Event.h"
+#import "EventCell.h"
 
 @interface EventsViewController (){
     NSUInteger pageNumber;
@@ -71,10 +72,12 @@ static NSString *EventCellIdentifier = @"EventCellID";
     return [_eventsArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:EventCellIdentifier];
+    EventCell *cell = (EventCell*)[_tableView dequeueReusableCellWithIdentifier:EventCellIdentifier];
     Event *event = [_eventsArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = event.title;
+    cell.titleLabel.text = event.title;
+    cell.addressLabel.text = event.address;
+    cell.descriptionTextView.text = event.description;
     
     return cell;
 }

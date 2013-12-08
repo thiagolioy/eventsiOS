@@ -47,6 +47,26 @@
     XCTAssertNotNil(category);
 }
 
+
+- (void)testShouldHaveExpectedValueIfNameIsNull
+{
+    [firstCategoryDict setObject:[NSNull null] forKey:@"name"];
+    
+    category = [EventCategory eventCategoryWithDict:firstCategoryDict];
+    
+    XCTAssertEqualObjects(@"", category.name);
+}
+
+
+- (void)testShouldHaveExpectedValueIfIDIsNull
+{
+    [firstCategoryDict setObject:[NSNull null] forKey:@"id"];
+    
+    category = [EventCategory eventCategoryWithDict:firstCategoryDict];
+    
+    XCTAssertEqualObjects(@"", category.ID);
+}
+
 - (void)testShouldCreateEventCategoriesFromArray
 {
     NSArray *categories = [EventCategory eventCategoriesWithArray:categoriesArray];

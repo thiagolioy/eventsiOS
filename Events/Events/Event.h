@@ -18,4 +18,6 @@
 
 +(Event*)eventWithDict:(NSDictionary*)dict;
 +(NSArray*)eventsWithArray:(NSArray*)array;
+
+-(NSString*)address;
 @end

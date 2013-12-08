@@ -13,6 +13,8 @@
 		20B8254B1855015C000B2E89 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8254A1855015C000B2E89 /* EventsViewController.m */; };
 		20B8254E185511BA000B2E89 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8254D185511BA000B2E89 /* Event.m */; };
 		20B825501855167B000B2E89 /* EventTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8254F1855167B000B2E89 /* EventTest.m */; };
+		20B8255418551A2F000B2E89 /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8255318551A2F000B2E89 /* EventCell.m */; };
+		20B8255818551F18000B2E89 /* NSObject+emptyNullValue.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8255718551F18000B2E89 /* NSObject+emptyNullValue.m */; };
 		20BFE2C31854CA6100698ED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C21854CA6100698ED7 /* Foundation.framework */; };
 		20BFE2C51854CA6100698ED7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */; };
 		20BFE2C71854CA6100698ED7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C61854CA6100698ED7 /* UIKit.framework */; };
@@ -52,6 +54,10 @@
 		20B8254C185511BA000B2E89 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
 		20B8254D185511BA000B2E89 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		20B8254F1855167B000B2E89 /* EventTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventTest.m; sourceTree = "<group>"; };
+		20B8255218551A2F000B2E89 /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		20B8255318551A2F000B2E89 /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		20B8255618551F18000B2E89 /* NSObject+emptyNullValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+emptyNullValue.h"; sourceTree = "<group>"; };
+		20B8255718551F18000B2E89 /* NSObject+emptyNullValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+emptyNullValue.m"; sourceTree = "<group>"; };
 		20BFE2BF1854CA6100698ED7 /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BFE2C21854CA6100698ED7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,6 +134,24 @@
 			name = model;
 			sourceTree = "<group>";
 		};
+		20B8255118551A18000B2E89 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				20B8255218551A2F000B2E89 /* EventCell.h */,
+				20B8255318551A2F000B2E89 /* EventCell.m */,
+			);
+			name = views;
+			sourceTree = "<group>";
+		};
+		20B8255518551EED000B2E89 /* categories */ = {
+			isa = PBXGroup;
+			children = (
+				20B8255618551F18000B2E89 /* NSObject+emptyNullValue.h */,
+				20B8255718551F18000B2E89 /* NSObject+emptyNullValue.m */,
+			);
+			name = categories;
+			sourceTree = "<group>";
+		};
 		20BFE2B61854CA6100698ED7 = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +187,8 @@
 		20BFE2C81854CA6100698ED7 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				20B8255518551EED000B2E89 /* categories */,
+				20B8255118551A18000B2E89 /* views */,
 				20B825401854E090000B2E89 /* model */,
 				20B8253B1854D96B000B2E89 /* requests */,
 				20B825371854D46A000B2E89 /* utils */,
@@ -356,12 +382,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20B8255418551A2F000B2E89 /* EventCell.m in Sources */,
 				20B825461854E0F5000B2E89 /* EventCategory.m in Sources */,
 				20B8254B1855015C000B2E89 /* EventsViewController.m in Sources */,
 				20BFE2D31854CA6100698ED7 /* AppDelegate.m in Sources */,
 				20BFE2F71854CDEA00698ED7 /* CategoriesViewController.m in Sources */,
 				20BFE2CF1854CA6100698ED7 /* main.m in Sources */,
 				20B8253E1854DA04000B2E89 /* APIClient.m in Sources */,
+				20B8255818551F18000B2E89 /* NSObject+emptyNullValue.m in Sources */,
 				20B8254E185511BA000B2E89 /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
