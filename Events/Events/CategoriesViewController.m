@@ -10,7 +10,11 @@
 
 @interface CategoriesViewController ()
 
+@property(nonatomic,strong) IBOutlet UITableView *tableView;
+
 @end
+
+static NSString *CategoryCellIdentifier = @"CategoryCellID";
 
 @implementation CategoriesViewController
 
@@ -33,6 +37,23 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - UITableViewDataSource Methods
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 5;
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:CategoryCellIdentifier];
+    
+    cell.textLabel.text = @"Celula";
+    
+    return cell;
+}
+
+#pragma mark - UITableViewDelegate Methods
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+
 }
 
 @end
