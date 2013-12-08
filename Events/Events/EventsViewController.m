@@ -7,13 +7,19 @@
 //
 
 #import "EventsViewController.h"
+#import "APIClient.h"
+#import "Event.h"
 
-@interface EventsViewController ()
+@interface EventsViewController (){
+    NSUInteger pageNumber;
+    NSUInteger pageSize;
+}
 
 
 @property(nonatomic,strong) IBOutlet NSMutableArray *eventsArray;
 @property(nonatomic,strong) IBOutlet UITableView *tableView;
 @property(nonatomic,strong) IBOutlet UILabel *headerSectionLabel;
+
 @end
 
 
@@ -25,8 +31,32 @@ static NSString *EventCellIdentifier = @"EventCellID";
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    _headerSectionLabel.text = @"10 events of 3000";
+    [self configureFetchEventsParams];
+    [self loadEvents];
+}
+
+-(void)configureFetchEventsParams{
+    pageNumber = 1;
+    pageSize = 20;
+}
+
+-(void)updateHeaderSectionWithNumberOfEvents:(NSUInteger)eventsNumber andTotalEventsNumber:(NSUInteger)total{
+    _headerSectionLabel.text = [NSString stringWithFormat:@"%d event(s) of %d",eventsNumber,total];
+}
+
+
+
+-(void)loadEvents{
+    [[APIClient shareClient] fetchEventsForCategoryName:_categoryName withPageNumber:pageNumber andPageSize:pageSize onSuccess:^(NSArray *events,NSUInteger totalEventsCount) {
+        if(!_eventsArray)
+            _eventsArray = [NSMutableArray arrayWithCapacity:events.count];
+        [_eventsArray addObjectsFromArray:events];
+        [self updateHeaderSectionWithNumberOfEvents:_eventsArray.count andTotalEventsNumber:totalEventsCount];
+        [_tableView reloadData];
+        
+    } onFailure:^{
+       
+    }];
 }
 
 - (void)didReceiveMemoryWarning
@@ -38,13 +68,13 @@ static NSString *EventCellIdentifier = @"EventCellID";
 
 #pragma mark - UITableViewDataSource Methods
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 5;//[_eventsArray count];
+    return [_eventsArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [_tableView dequeueReusableCellWithIdentifier:EventCellIdentifier];
-//    EventCategory *category = [_categoriesArray objectAtIndex:indexPath.row];
+    Event *event = [_eventsArray objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = _categoryName;
+    cell.textLabel.text = event.title;
     
     return cell;
 }

@@ -11,6 +11,7 @@
 		20B825461854E0F5000B2E89 /* EventCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B825451854E0F5000B2E89 /* EventCategory.m */; };
 		20B825481854E200000B2E89 /* EventCategoryTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B825471854E200000B2E89 /* EventCategoryTest.m */; };
 		20B8254B1855015C000B2E89 /* EventsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8254A1855015C000B2E89 /* EventsViewController.m */; };
+		20B8254E185511BA000B2E89 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 20B8254D185511BA000B2E89 /* Event.m */; };
 		20BFE2C31854CA6100698ED7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C21854CA6100698ED7 /* Foundation.framework */; };
 		20BFE2C51854CA6100698ED7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */; };
 		20BFE2C71854CA6100698ED7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 20BFE2C61854CA6100698ED7 /* UIKit.framework */; };
@@ -47,6 +48,8 @@
 		20B825471854E200000B2E89 /* EventCategoryTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCategoryTest.m; sourceTree = "<group>"; };
 		20B825491855015C000B2E89 /* EventsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventsViewController.h; sourceTree = "<group>"; };
 		20B8254A1855015C000B2E89 /* EventsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventsViewController.m; sourceTree = "<group>"; };
+		20B8254C185511BA000B2E89 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		20B8254D185511BA000B2E89 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		20BFE2BF1854CA6100698ED7 /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BFE2C21854CA6100698ED7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -117,6 +120,8 @@
 			children = (
 				20B825441854E0F5000B2E89 /* EventCategory.h */,
 				20B825451854E0F5000B2E89 /* EventCategory.m */,
+				20B8254C185511BA000B2E89 /* Event.h */,
+				20B8254D185511BA000B2E89 /* Event.m */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 				20BFE2F71854CDEA00698ED7 /* CategoriesViewController.m in Sources */,
 				20BFE2CF1854CA6100698ED7 /* main.m in Sources */,
 				20B8253E1854DA04000B2E89 /* APIClient.m in Sources */,
+				20B8254E185511BA000B2E89 /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

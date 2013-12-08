@@ -11,12 +11,15 @@
 #import <AFNetworking/AFNetworkActivityIndicatorManager.h>
 #import <AFNetworking/AFNetworkReachabilityManager.h>
 #import "EventCategory.h"
+#import "Event.h"
 #import "Keys.h"
 
 #define SERVER_ERROR 500
 
 #define BASE_URL @"http://api.eventful.com/json/"
+
 #define CATEGORIES_URL @"categories/list?app_key=%@"
+#define EVENTS_URL @"events/search?app_key=%@&category=%@&page_number=%d&page_size=%d"
 
 @interface APIClient (){
    AFHTTPRequestOperationManager *manager;
@@ -87,6 +90,32 @@ static APIClient *instance;
         [self handleErrors:operation];
         failure();
     
+    }];
+}
+
+
+-(void)fetchEventsForCategoryName:(NSString*)name withPageNumber:(NSUInteger)pageNumber andPageSize:(NSUInteger)pageSize
+                        onSuccess:(void (^)(NSArray *events,NSUInteger totalEventsCount))success
+                        onFailure:(void (^)(void))failure{
+   
+    NSString *url = [NSString stringWithFormat:EVENTS_URL,APP_KEY,name,pageNumber,pageSize];
+    
+    [manager GET:url parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *total = [responseObject objectForKey:@"total_items"];
+        
+        NSMutableArray *events = [NSMutableArray array];
+        for(NSDictionary *dc in [[responseObject objectForKey:@"events"] objectForKey:@"event"]){
+            Event *event = [Event eventWithDict:dc];
+            [events addObject:event];
+        }
+        success(events,[total integerValue]);
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        [self handleErrors:operation];
+        failure();
+        
     }];
 }
 
