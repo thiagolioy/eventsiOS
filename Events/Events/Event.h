@@ -17,5 +17,5 @@
 @property(nonatomic,strong) NSString *ID;
 
 +(Event*)eventWithDict:(NSDictionary*)dict;
-
++(NSArray*)eventsWithArray:(NSArray*)array;
 @end

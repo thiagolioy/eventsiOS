@@ -27,13 +27,13 @@
     return [[self alloc] initWithDict:dict];
 }
 
-//+(NSArray*)eventCategoriesWithArray:(NSArray*)array{
-//    NSMutableArray *categories = [NSMutableArray array];
-//    for(NSDictionary *dc in array){
-//        EventCategory *category = [EventCategory eventCategoryWithDict:dc];
-//        [categories addObject:category];
-//    }
-//    return [NSArray arrayWithArray:categories];
-//}
++(NSArray*)eventsWithArray:(NSArray*)array{
+    NSMutableArray *events = [NSMutableArray array];
+    for(NSDictionary *dc in array){
+        Event *event = [Event eventWithDict:dc];
+        [events addObject:event];
+    }
+    return [NSArray arrayWithArray:events];
+}
 
 @end
