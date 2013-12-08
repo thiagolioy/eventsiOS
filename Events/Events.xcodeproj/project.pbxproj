@@ -35,6 +35,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20B825391854D4A8000B2E89 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		20B8253A1854D507000B2E89 /* Keys.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Keys.h; sourceTree = "<group>"; };
 		20BFE2BF1854CA6100698ED7 /* Events.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Events.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20BFE2C21854CA6100698ED7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		20BFE2C41854CA6100698ED7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -83,6 +85,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20B825371854D46A000B2E89 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				20B825391854D4A8000B2E89 /* Constants.h */,
+				20B8253A1854D507000B2E89 /* Keys.h */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
 		20BFE2B61854CA6100698ED7 = {
 			isa = PBXGroup;
 			children = (
@@ -118,6 +129,7 @@
 		20BFE2C81854CA6100698ED7 /* Events */ = {
 			isa = PBXGroup;
 			children = (
+				20B825371854D46A000B2E89 /* utils */,
 				20BFE2F41854CDD200698ED7 /* controllers */,
 				20BFE2F31854CDC700698ED7 /* storyboards */,
 				20BFE2D11854CA6100698ED7 /* AppDelegate.h */,
