@@ -94,19 +94,18 @@ static NSString *CategoryCellIdentifier = @"CategoryCellID";
 #pragma mark - UISearchBar Methods
 -(void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     
-    if(searchText.length == 0){
-        hasSearchResults = NO;
-        [_tableView reloadData];
-        [searchBar resignFirstResponder];
-    }else{
+    hasSearchResults = NO;
+    if(searchText.length != 0){
         _categoriesThatMatchSearch = [NSMutableArray array];
         for(EventCategory *c in _categoriesArray)
-            if([c.name rangeOfString:searchText options:NSCaseInsensitiveSearch|NSDiacriticInsensitiveSearch|NSAnchoredSearch].location != NSNotFound)
+            if([c.name rangeOfString:searchText options:NSCaseInsensitiveSearch|
+                NSDiacriticInsensitiveSearch|NSAnchoredSearch].location != NSNotFound)
                 [_categoriesThatMatchSearch addObject:c];
         
         hasSearchResults = YES;
-        [_tableView reloadData];
     }
+    
+    [_tableView reloadData];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)activeSearchBar
